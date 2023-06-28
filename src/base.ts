@@ -1,9 +1,9 @@
-import baseImg from "/sprites/base.png"
+import baseImg from "./assets/sprites/base.png"
 
 const base = new Image()
 base.src = baseImg
 
-export default class Base {
+export class Base {
   x: number
   y: number
   width: number
@@ -12,13 +12,13 @@ export default class Base {
   canvas: HTMLCanvasElement
   ctx: CanvasRenderingContext2D
 
-  constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
+  constructor(canvas: HTMLCanvasElement) {
     this.x = 0
     this.y = canvas.height * 0.85
     this.width = canvas.width * 2
     this.height = canvas.height * 0.3
     this.canvas = canvas
-    this.ctx = ctx
+    this.ctx = <CanvasRenderingContext2D>canvas.getContext("2d")
     this.baseSpeed = 10
   }
 
@@ -31,3 +31,4 @@ export default class Base {
     this.ctx.drawImage(base, this.x, this.y, this.width, this.height)
   }
 }
+export type BaseType = Base

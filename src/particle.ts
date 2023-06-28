@@ -1,4 +1,4 @@
-const particleArr: Particle[] = []
+let particleArr: Particle[] = []
 
 class Particle {
   x: number
@@ -18,9 +18,9 @@ class Particle {
   ) {
     this.x = x
     this.y = y
-    this.size = Math.random() * 7 + 3
+    this.size = Math.random() * 7 + 5
     this.speedx = 5
-    this.speedy = Math.random() - 0.5
+    this.speedy = Math.random() - 0.3
     this.birdColor = birdColor
     this.ctx = ctx
     if (birdColor === "red") {
@@ -43,12 +43,13 @@ class Particle {
   }
 }
 
-export default function handleParticles(
+export function handleParticles(
   x: number,
   y: number,
   birdColor: string,
-  ctx: CanvasRenderingContext2D
+  canvas: HTMLCanvasElement
 ) {
+  const ctx = <CanvasRenderingContext2D>canvas.getContext("2d")
   particleArr.unshift(new Particle(x, y, birdColor, ctx))
   for (let i = 0; particleArr.length > i; i++) {
     particleArr[i].hue += 1
@@ -69,4 +70,7 @@ export default function handleParticles(
       particleArr.pop()
     }
   }
+}
+export function clearParticleArr() {
+  particleArr = []
 }

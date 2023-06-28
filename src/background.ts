@@ -1,5 +1,5 @@
-import bgImgDay from "/sprites/background-day.png"
-import bgImgNight from "/sprites/background-night.png"
+import bgImgDay from "./assets/sprites/background-day.png"
+import bgImgNight from "./assets/sprites/background-night.png"
 const bgd = new Image()
 bgd.src = bgImgDay
 const bgn = new Image()
@@ -18,16 +18,16 @@ export default class Background {
   canvas: HTMLCanvasElement
   ctx: CanvasRenderingContext2D
 
-  constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
+  constructor(canvas: HTMLCanvasElement) {
     this.x1 = 0
-    this.y1 = - canvas.height * 0.15
+    this.y1 = -canvas.height * 0.15
     this.x2 = canvas.width
-    this.y2 = - canvas.height * 0.15
+    this.y2 = -canvas.height * 0.15
     this.width = canvas.width
     this.height = canvas.height
     this.canvas = canvas
-    this.ctx = ctx
-    this.bgSpeed = 10
+    this.ctx = <CanvasRenderingContext2D>canvas.getContext("2d")
+    this.bgSpeed = 5
     this.randInt = Math.floor(Math.random() * 2)
   }
 
