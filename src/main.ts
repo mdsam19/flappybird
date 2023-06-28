@@ -71,6 +71,7 @@ function animateGame() {
 function menuAnimate() {
   ctx.font = "50px Geneva"
   ctx.clearRect(0, 0, canvas.width, canvas.height)
+  bg.reset()
   bg.draw()
   base.draw()
   handleStart(canvas, bird)

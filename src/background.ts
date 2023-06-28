@@ -56,4 +56,7 @@ export default class Background {
       this.height
     )
   }
+  reset() {
+    this.randInt = Math.floor(Math.random() * 2)
+  }
 }
