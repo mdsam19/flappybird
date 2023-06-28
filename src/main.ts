@@ -4,7 +4,7 @@ import { Base } from "./base"
 import { handleParticles, clearParticleArr } from "./particle"
 import Background from "./background"
 import { handleObstacles, clearpipeArr } from "./obstacles"
-import { isCollided,resetCollider } from "./collider"
+import { isCollided, resetCollider } from "./collider"
 import { pipeArr } from "./obstacles"
 import { handlePoints, resetPoints } from "./points"
 import gameOverImg from "./assets/sprites/gameover.png"
@@ -17,7 +17,6 @@ const hitwav = new Audio()
 hitwav.src = hitaudio
 const diewav = new Audio()
 diewav.src = dieaudio
-
 
 const canvas = <HTMLCanvasElement>document.querySelector("#canvas")
 const ctx = <CanvasRenderingContext2D>canvas.getContext("2d")
@@ -71,7 +70,6 @@ function animateGame() {
 function menuAnimate() {
   ctx.font = "50px Geneva"
   ctx.clearRect(0, 0, canvas.width, canvas.height)
-  bg.reset()
   bg.draw()
   base.draw()
   handleStart(canvas, bird)
@@ -127,8 +125,8 @@ function gameoverScene() {
   ctx.strokeRect(canvas.width * 0.35, canvas.height * 0.5, 120, 50)
   ctx.fillStyle = "white"
   ctx.fillText("Menu", canvas.width * 0.35 + 15, canvas.height * 0.5 + 35)
-  if(die){
-    diewav.currentTime=0.4
+  if (die) {
+    diewav.currentTime = 0.4
     diewav.play()
     die = false
   }
@@ -177,6 +175,7 @@ canvas.addEventListener("touchstart", function (e: TouchEvent) {
       onSplash = false
       gameOver = false
       bird.reset()
+      bg.reset()
     }
   }
   if (onMainmenu) {
